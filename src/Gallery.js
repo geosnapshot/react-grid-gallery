@@ -265,6 +265,7 @@ class Gallery extends Component {
             onSelectImage={this.onSelectImage}
             tagStyle={this.props.tagStyle}
             tileViewportStyle={this.props.tileViewportStyle}
+            selectedIconColor={this.props.selectedIconColor}
             thumbnailStyle={this.props.thumbnailStyle}
             thumbnailImageComponent={this.props.thumbnailImageComponent}
                 />;});
