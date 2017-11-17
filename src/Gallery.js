@@ -263,9 +263,11 @@ class Gallery extends Component {
             isSelectable={this.props.enableImageSelection}
             onClick={this.getOnClickThumbnailFn()}
             onSelectImage={this.onSelectImage}
+            onContextMenu={this.props.onContextMenu}
             tagStyle={this.props.tagStyle}
             tileViewportStyle={this.props.tileViewportStyle}
             selectedIconColor={this.props.selectedIconColor}
+
             thumbnailStyle={this.props.thumbnailStyle}
             thumbnailImageComponent={this.props.thumbnailImageComponent}
                 />;});
@@ -371,6 +373,7 @@ Gallery.propTypes = {
     tagStyle: PropTypes.object,
     thumbnailImageComponent: PropTypes.func,
     lightBoxProps : PropTypes.object,
+    onContextMenu: PropTypes.func
 };
 
 Gallery.defaultProps = {
@@ -389,7 +392,7 @@ Gallery.defaultProps = {
     showImageCount: true,
     lightboxWidth: 1024,
     showLightboxThumbnails: false,
-    lightBoxProps : {},
+    lightBoxProps : {}
 };
 
 module.exports = Gallery;

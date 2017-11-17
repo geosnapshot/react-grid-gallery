@@ -168,6 +168,7 @@ class Image extends Component {
             alt: alt,
             title: this.props.item.caption,
             style: this.thumbnailStyle(),
+            onContextMenu: this.props.onContextMenu,
         };
 
         var ThumbnailImageComponent = this.props.thumbnailImageComponent;
@@ -268,7 +269,8 @@ Image.propTypes = {
     thumbnailStyle: PropTypes.func,
     tagStyle: PropTypes.object,
     customOverlay: PropTypes.element,
-    thumbnailImageComponent: PropTypes.func
+    thumbnailImageComponent: PropTypes.func,
+    onContextMenu: PropTypes.func
 };
 
 Image.defaultProps = {
