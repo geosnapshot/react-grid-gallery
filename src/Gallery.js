@@ -267,7 +267,7 @@ class Gallery extends Component {
             tagStyle={this.props.tagStyle}
             tileViewportStyle={this.props.tileViewportStyle}
             selectedIconColor={this.props.selectedIconColor}
-
+            selectCheckboxAlwaysVisible={this.props.selectCheckboxAlwaysVisible}
             thumbnailStyle={this.props.thumbnailStyle}
             thumbnailImageComponent={this.props.thumbnailImageComponent}
                 />;});
@@ -373,7 +373,8 @@ Gallery.propTypes = {
     tagStyle: PropTypes.object,
     thumbnailImageComponent: PropTypes.func,
     lightBoxProps : PropTypes.object,
-    onContextMenu: PropTypes.func
+    onContextMenu: PropTypes.func,
+    selectCheckboxAlwaysVisible: PropTypes.bool
 };
 
 Gallery.defaultProps = {

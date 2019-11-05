@@ -22,7 +22,7 @@ class CheckButton extends Component {
     }
 
     visibility () {
-        if (this.props.isSelected ||
+        if (this.props.isSelected || this.props.alwaysVisible ||
             (this.props.isSelectable && this.props.parentHover))
             return 'visible';
         return 'hidden';
@@ -106,11 +106,13 @@ CheckButton.propTypes = {index: PropTypes.number,
                          parentHover: PropTypes.bool,
                          hover: PropTypes.bool,
                          hoverColor: PropTypes.string,
-                         onClick: PropTypes.func};
+                         onClick: PropTypes.func,
+                         alwaysVisible: PropTypes.bool};
 
 CheckButton.defaultProps = {isSelectable: true,
                             isSelected: false,
                             parentHover: false,
-                            hover: false};
+                            hover: false,
+                            alwaysVisible: false};
 
 module.exports = CheckButton;

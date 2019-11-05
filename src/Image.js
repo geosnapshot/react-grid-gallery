@@ -131,7 +131,8 @@ class Image extends Component {
             isSelectable={this.props.isSelectable}
             onClick={this.props.isSelectable ?
                      this.props.onSelectImage : null}
-            parentHover={this.state.hover}/>
+            parentHover={this.state.hover}
+            alwaysVisible={this.props.selectCheckboxAlwaysVisible}/>
         );
     }
 
@@ -270,7 +271,8 @@ Image.propTypes = {
     tagStyle: PropTypes.object,
     customOverlay: PropTypes.element,
     thumbnailImageComponent: PropTypes.func,
-    onContextMenu: PropTypes.func
+    onContextMenu: PropTypes.func,
+    selectCheckboxAlwaysVisible: PropTypes.bool
 };
 
 Image.defaultProps = {
