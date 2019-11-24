@@ -41,7 +41,7 @@ gulp.task('build-lib', function() {
                      '!./src/require.js',
                      '!./src/react-grid-gallery.bundle.js'])
         .pipe(babel({
-            presets: ['es2015', 'react']
+            presets: ['es2015', 'react', 'stage-3']
         }))
         .pipe(gulp.dest('lib'));
 });
