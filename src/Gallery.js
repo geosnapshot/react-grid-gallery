@@ -12,7 +12,8 @@ class Gallery extends Component {
             thumbnails: [],
             lightboxIsOpen: this.props.isOpen,
             currentImage: this.props.currentImage,
-            containerWidth: 0
+            containerWidth: 0,
+            rowsCount: 0
         };
 
         this.onResize = this.onResize.bind(this);
@@ -36,9 +37,9 @@ class Gallery extends Component {
         if(this.state.images != np.images || this.props.maxRows != np.maxRows){
             this.setState({
                 images: np.images,
-                thumbnails: this.renderThumbs(this._gallery.clientWidth,
+                ...this.renderThumbs(this._gallery.clientWidth,
                                               np.images)
-            });
+            }, () => this.props.onRender({rows: this.state.rowsCount}));
         }
     }
 
@@ -54,8 +55,8 @@ class Gallery extends Component {
         if (!this._gallery) return;
         this.setState({
             containerWidth: Math.floor(this._gallery.clientWidth),
-            thumbnails: this.renderThumbs(this._gallery.clientWidth)
-        });
+            ...this.renderThumbs(this._gallery.clientWidth)
+        }, () => this.props.onRender({rows: this.state.rowsCount}));
     }
 
     openLightbox (index, event) {
@@ -230,7 +231,7 @@ class Gallery extends Component {
             this.setThumbScale(items[t]);
         }
 
-        var thumbs = [];
+        var thumbnails = [];
         var rows = [];
         while(items.length > 0) {
             rows.push(this.buildImageRow(items, containerWidth));
@@ -241,15 +242,15 @@ class Gallery extends Component {
                 var item = rows[r][i];
                 if(this.props.maxRows) {
                     if(r < this.props.maxRows) {
-                        thumbs.push(item);
+                        thumbnails.push(item);
                     }
                 }
                 else {
-                    thumbs.push(item);
+                    thumbnails.push(item);
                 }
             }
         }
-        return thumbs;
+        return {thumbnails, rowsCount: rows.length};
     }
 
     render () {
@@ -374,7 +375,8 @@ Gallery.propTypes = {
     thumbnailImageComponent: PropTypes.func,
     lightBoxProps : PropTypes.object,
     onContextMenu: PropTypes.func,
-    selectCheckboxAlwaysVisible: PropTypes.bool
+    selectCheckboxAlwaysVisible: PropTypes.bool,
+    onRender: PropTypes.func
 };
 
 Gallery.defaultProps = {
