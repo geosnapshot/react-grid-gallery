@@ -39,7 +39,9 @@ class Gallery extends Component {
                 images: np.images,
                 ...this.renderThumbs(this._gallery.clientWidth,
                                               np.images)
-            }, () => this.props.onRender({rows: this.state.rowsCount}));
+            }, () => {
+                if(this.props.onRender) this.props.onRender({rows: this.state.rowsCount})
+            });
         }
     }
 
@@ -56,7 +58,9 @@ class Gallery extends Component {
         this.setState({
             containerWidth: Math.floor(this._gallery.clientWidth),
             ...this.renderThumbs(this._gallery.clientWidth)
-        }, () => this.props.onRender({rows: this.state.rowsCount}));
+        }, () => {
+            if(this.props.onRender) this.props.onRender({rows: this.state.rowsCount});
+        });
     }
 
     openLightbox (index, event) {
